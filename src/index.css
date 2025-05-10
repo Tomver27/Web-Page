@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Mobile-first */
+.content {
+  padding: 1rem;
+  margin-left: 0; /* sin barra lateral */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* A partir de 768px activamos la barra lateral */
+@media (min-width: 768px) {
+  .content {
+    margin-left: 4rem; /* espacio para sidebar */
+  }
 }

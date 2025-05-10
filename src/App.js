@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import SidebarSocial from './components/SidebarSocial';
+import Cursor from './components/Cursor';
+import Button from './components/Button';
+import './index.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Cursor />
+      <SidebarSocial />
+      <main className="content">
+        <h2>Bienvenido a mi Landing</h2>
+        <p>Ejemplo de botones interactivos:</p>
+        <Button onClick={() => alert('¡Click!')}>Haz clic aquí</Button>
+      </main>
+    </>
   );
 }
 

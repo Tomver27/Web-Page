@@ -1,0 +1,23 @@
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: #79121e;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, background 0.3s;
+  z-index: 1001;
+}
+
+.cursor-dot--hover {
+  transform: translate(-50%, -50%) scale(2);
+  background: #79124c;
+}
+
+/* Oculta el cursor custom en dispositivos táctiles */
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
