@@ -19,35 +19,38 @@ export default function SidebarSocial() {
         <FaGithub />
       </a>
       <a
-        href="https://twitter.com/Tomver27"
+        href="https://twitter.com/ElTomver"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaTwitter />
       </a>
       <a
-        href="https://instagram.com/Tomver27"
+        href="https://instagram.com/tomas_vera_27"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaInstagram />
       </a>
-      {/* Elempleo */}
-      <a
-        href="https://www.elempleo.com/perfil/Tomver27"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaBriefcase />
-      </a>
-      {/* LinkedIn */}
-      <a
-        href="https://www.linkedin.com/in/Tomver27"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaLinkedin />
-      </a>
+      
+      {/*
+  <a
+    href="https://www.elempleo.com/perfil/Tomver27"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaBriefcase />
+  </a>
+  <a
+    href="https://www.linkedin.com/in/Tomver27"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaLinkedin />
+  </a>
+*/}
+
+      
     </div>
   );
 }
