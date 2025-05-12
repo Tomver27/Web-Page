@@ -2,22 +2,17 @@
   position: fixed;
   width: 12px;
   height: 12px;
-  background: #79121e;
+  background: #870015;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, background 0.3s;
+  transition: transform 0.15s ease, background 0.3s, border 0.3s;
   z-index: 1001;
 }
 
 .cursor-dot--hover {
+  /* escala y estilo al hover */
   transform: translate(-50%, -50%) scale(2);
-  background: #79124c;
-}
-
-/* Oculta el cursor custom en dispositivos táctiles */
-@media (pointer: coarse), (hover: none) {
-  .cursor-dot {
-    display: none !important;
-  }
+  background: transparent;
+  border: 2px solid #870015;
 }

@@ -3,14 +3,14 @@
   font-size: 1rem;
   border: 2px solid #000000;
   background: transparent;
-  color: #79121e;
+  color: #870015;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .btn:hover {
-  background-color: #79121e;
+  background-color: #870015;
   color: white;
   transform: translateY(-2px);
 }

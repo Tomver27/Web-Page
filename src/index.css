@@ -1,12 +1,30 @@
-/* Mobile-first */
-.content {
-  padding: 1rem;
-  margin-left: 0; /* sin barra lateral */
+body, html {
+  margin: 0; padding: 0;
+  scroll-behavior: smooth;
 }
 
-/* A partir de 768px activamos la barra lateral */
-@media (min-width: 768px) {
-  .content {
-    margin-left: 4rem; /* espacio para sidebar */
+main {
+  margin-top: 60px;
+}
+
+.section-home {
+  height: 100vh;
+  
+}
+
+.section-about,
+.section-exp {
+  padding: 4rem 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .sidebar-social {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 1rem;
   }
 }
