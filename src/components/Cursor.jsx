@@ -19,12 +19,12 @@ export default function Cursor() {
     let animationFrame;
     const follow = () => {
       setPos(prev => {
-        // interpolación: mueve el dot un 15% hacia la posición real
         const dx = mousePos.current.x - prev.x;
         const dy = mousePos.current.y - prev.y;
+        const smoothing = 0.05;
         return {
-          x: prev.x + dx * 0.15,
-          y: prev.y + dy * 0.15
+          x: prev.x + dx * smoothing,
+          y: prev.y + dy * smoothing
         };
       });
       animationFrame = requestAnimationFrame(follow);

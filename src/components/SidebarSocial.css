@@ -18,3 +18,21 @@
 .sidebar-social a:hover {
   color: #870015;
 }
+
+/* En móvil ocultamos el sidebar estático */
+@media (max-width: 768px) {
+  .sidebar-social {
+    display: none;
+  }
+}
+
+/* Cuando el menú (overlay) está abierto, mostramos la fila de iconos */
+.mobile-menu .sidebar-social {
+  position: static;
+  transform: none;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+  display: flex !important;
+}

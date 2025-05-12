@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
 import './Header.css';
+import SidebarSocial from './SidebarSocial';
 import { FaExternalLinkAlt, FaBars } from 'react-icons/fa';
 
 export default function Header() {
@@ -11,49 +12,80 @@ export default function Header() {
     { label: 'exa', href: 'https://exacol.github.io/ExaPages/', external: true }
   ];
 
+  // Bloquear scroll cuando el menú está abierto
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen(open => !open);
+
+  // Función que renderiza un <a> slider/interactivo
+  const renderSliderLink = ({ label, href, external }, isMenu) => (
+    <a
+      key={label}
+      href={href}
+      className="slider interactive"
+      onClick={isMenu ? toggleMenu : undefined}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      {/* Dos spans idénticos que se deslizan */}
+      <span>
+        {label} {external && <FaExternalLinkAlt className="icon-ext" />}
+      </span>
+      <span>
+        {label} {external && <FaExternalLinkAlt className="icon-ext" />}
+      </span>
+    </a>
+  );
+
   return (
-    <header className="header">
-      <img src={logo} alt="Mi Logo" className="header-logo" />
+    <>
+      <header className="header">
+        <img src={logo} alt="Mi Logo" className="header-logo" />
 
-      {/* navegación de escritorio */}
-      <nav className="nav-links">
-        <a href="/">[menú]</a>
-        {links.map(({label, href, external}) => (
-          <a
-            key={label}
-            href={href}
-            {...(external ? { target:'_blank', rel:'noopener noreferrer' } : {})}
-          >
-            {label}{external && <FaExternalLinkAlt className="icon-ext"/>}
+        {/* navegación desktop */}
+        <nav className="nav-links">
+          {/* [Menú] también como slider */}
+          <a href="/" className="slider interactive">
+            <span>[Menú]</span>
+            <span>[Menú]</span>
           </a>
-        ))}
-      </nav>
 
-      {/* botón hamburguesa móvil */}
-      <button
-        className="hamburger"
-        onClick={() => setMenuOpen(open => !open)}
-        aria-label="Abrir menú"
-      >
-        <FaBars />
-      </button>
+          {/* el resto de links */}
+          {links.map(link => renderSliderLink(link, false))}
+        </nav>
 
-      {/* menú desplegable móvil */}
+        {/* hamburguesa móvil */}
+        <button
+          className="hamburger"
+          onClick={toggleMenu}
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        >
+          <FaBars />
+        </button>
+      </header>
+
+      {/* overlay full-screen */}
       {menuOpen && (
         <div className="mobile-menu">
-          <a href="/">[menú]</a>
-          {links.map(({label, href, external}) => (
-            <a
-              key={label}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              {...(external ? { target:'_blank', rel:'noopener noreferrer' } : {})}
-            >
-              {label}{external && <FaExternalLinkAlt className="icon-ext"/>}
+          <nav className="mobile-nav-links">
+            {/* [Menú] en el overlay */}
+            <a href="/" className="slider interactive" onClick={toggleMenu}>
+              <span>[Menú]</span>
+              <span>[Menú]</span>
             </a>
-          ))}
+
+            {/* links en el overlay */}
+            {links.map(link => renderSliderLink(link, true))}
+          </nav>
+
+          {/* redes sociales dentro del menú */}
+          <div className="mobile-social">
+            <SidebarSocial />
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

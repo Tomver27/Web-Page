@@ -6,11 +6,14 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
   z-index: 1000;
-  background: rgba(0,0,0,0.6);
+  background: transparent;
 }
+
 
 .header-logo {
   height: 40px;
+  width: auto;
+  max-width: 240px;   /* nunca pase de 120px de ancho */
 }
 
 .nav-links {
@@ -19,7 +22,7 @@
 }
 
 .nav-links a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-weight: bold;
   display: flex;
@@ -31,29 +34,121 @@
   font-size: 0.7rem;
 }
 
-/* Ocultamos hamburguesa en desktop */
+/* Botón hamburguesa oculto por defecto */
 .hamburger {
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: black;
   font-size: 1.5rem;
 }
 
-/* Menú móvil */
+/* Overlay móvil (menú desplegable) */
 .mobile-menu {
   position: fixed;
-  top: 60px; right: 1rem;
+  inset: 0;                /* top/right/bottom/left = 0 */
   background: rgba(0,0,0,0.9);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 2000;
 }
 
-/* Responsivo */
+/* Responsivo: hasta 768px cambio a móvil */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: block; }
+}
+
+/* Overlay móvil (menú desplegable) */
+.mobile-menu {
+  position: fixed;
+  inset: 0;                /* top/right/bottom/left = 0 */
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 2000;
+}
+
+/* Enlace y estilos de nav dentro del overlay */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Wrapper para tus redes dentro del overlay */
+.mobile-social .sidebar-social {
+  position: static;      /* quita el fixed original */
+  transform: none;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Asegura que .slider tenga espacio sólo para una línea */
+.slider {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;        /* ajusta según tu font-size */
+  height: 1.2em;           /* igual que line-height */
+}
+
+/* Cada span ocupa toda la caja, y se transiciona su transform */
+.slider span {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* El primer span arranca en 0, el segundo justo debajo */
+.slider span:first-child {
+  transform: translateY(0);
+}
+.slider span:last-child {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  transform: translateY(0);
+}
+
+/* Al hacer hover, ambos suben un 100% de su altura */
+.slider:hover span:first-child {
+  transform: translateY(-100%);
+}
+.slider:hover span:last-child {
+  transform: translateY(-100%);
+}
+
+/* Asegúrate de que los elementos interactivos sigan detectando hover para el cursor */
+.interactive {
+  /* ya tenías esto, por ejemplo: */
+  cursor: none; /* o lo que uses para ocultar el puntero real */
+}
+
+
+/* Asegúrate de ocultar el sidebar estático solo en móvil (≤768px) */
+@media (max-width: 768px) {
+  .sidebar-social {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+  }
 }
