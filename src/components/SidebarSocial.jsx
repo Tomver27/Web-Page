@@ -18,13 +18,14 @@ export default function SidebarSocial() {
       >
         <FaGithub />
       </a>
-      <a
+      
+{ /*<a
         href="https://twitter.com/ElTomver"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FaTwitter />
-      </a>
+      </a>*/}
       <a
         href="https://instagram.com/tomas_vera_27"
         target="_blank"
