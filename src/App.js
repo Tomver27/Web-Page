@@ -23,7 +23,7 @@ function App() {
       <main>
         {/* Hero / Home */}
         <section id="home" className="section-home">
-          {/* Aquí tu gran logo centrado, fondo, etc. */}
+          <h2>Pronto grandes cosas verás aqui... En mantenimiento</h2>
         </section>
 
         {/* Sección Sobre Mí */}
